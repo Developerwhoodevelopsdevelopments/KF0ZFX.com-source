@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<head>
+    <meta charset="UTF-8">
+    <title>Antenna Length Calculator - KF0ZFX.com</title>
+</head>
+<body>
+<form>
+	<label for="MHz">Frequency in MHz:</label>
+	<input type="number" id="MHz" name="MHz">
+	<br>
+	<label for="WLF">Wavelength Fraction:</label>
+	<select name="WLF" id="WLF">
+		<option value="1">1/1</option>
+		<option value="0.625">5/8</option>
+		<option value="0.5">1/2</option>
+		<option value="0.25">1/4</option>
+	</select>
+	<br>
+	<button type="button" onclick="calculate()">Calculate</button>
+	<br>
+	<output id="result" name="result" for="MHz WLF">Output will appear here.</output>
+</form>
+<script>
+function calculate() {
+	MHz = document.getElementById("MHz").valueAsNumber;
+	WLF = parseFloat(document.getElementById("WLF").value);
+	document.getElementById("result").value = 300 / MHz * WLF
+}
+</script>
+</body>
+</html>

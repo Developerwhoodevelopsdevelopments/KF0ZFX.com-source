@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<head>
+    <meta charset="UTF-8">
+    <title>Maidenhead Grid Locator - KF0ZFX.com</title>
+</head>
+<body>
+<p>Note, if you don't type the grid right, thats your own fault, there aint no errors round here</p>
+<form>
+	<label for="MGS">Grid square:</label>
+	<input type="txt" id="MGS" name="MGS">
+	<button type="button" onclick="locate()">Locate</button>
+	<output id="result" name="result" for="MGS">Output will appear here.</output>
+</form>
+<script>
+function locate() {
+	MGS = document.getElementById("MGS").value;
+	let resultlat = 0;
+	let resultlong = 0;
+	resultlong += -180 + ((MGS[0].toLowerCase().charCodeAt(0) - 97) * 20);
+	resultlat += -90 + ((MGS[1].toLowerCase().charCodeAt(0) - 97) * 10);
+	resultlong += Number(MGS[2]) * 2;
+	resultlat += Number(MGS[3]);
+	if (MGS.length === 6) {
+		resultlong += (MGS[4].toLowerCase().charCodeAt(0) - 97) * (2 / 24);
+		resultlat += (MGS[5].toLowerCase().charCodeAt(0) - 97) * (1 / 24);
+		resultlong += (2 / 24) / 2;
+		resultlat += (1 / 24) / 2;
+	} else {
+		resultlong += 2 / 2;
+		resultlat += 1 / 2;
+	}
+	if (resultlong < 0) {
+		longdir = "W"
+	} else {
+		longdir = "E"
+	}
+	if (resultlat < 0) {
+		latdir = "S"
+	} else {
+		latdir = "N"
+	}
+	let abslong = Math.abs(resultlong).toFixed(4);
+	let abslat = Math.abs(resultlat).toFixed(4);
+
+	document.getElementById("result").value = `${abslat}°${latdir} ${abslong}°${longdir}`
+}
+</script>
+</body>
+</html>

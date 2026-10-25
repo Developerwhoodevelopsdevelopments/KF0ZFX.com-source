@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<head>
+    <meta charset="UTF-8">
+    <title>Electrical Unit Converter - KF0ZFX.com</title>
+</head>
+<body>
+<form>
+	<select name="d1" id="d1">
+		<option value="amp">amp</option>
+		<option value="volt">volt</option>
+		<option value="watt">watt</option>
+	</select>
+	<input type="number" id="number1">
+	<br>
+	<select name="d2" id="d2">
+		<option value="amp">amp</option>
+		<option value="volt">volt</option>
+		<option value="watt">watt</option>
+	</select>
+	<input type="number" id="number2">
+	<br>
+	<button type="button" onclick="calculate()">Calculate missing!</button>
+	<br>
+	<output id="result" name="result" for="D1 D2">Output will appear here.</output>
+</form>
+<script>
+//I'm sorry for writting this terrible code
+function calculate() {
+	let d1 = document.getElementById("d1").value;
+	let d2 = document.getElementById("d2").value;
+	let number1 = document.getElementById("number1").valueAsNumber;
+	let number2 = document.getElementById("number2").valueAsNumber;
+	if (d1 == d2) {
+		document.getElementById("result").value = "Error, dropdown 1 is the same unit as dropdown 2"
+	} else if (d1 != "watt" && d2 != "watt") {
+		let watts = number1 * number2
+		document.getElementById("result").value = `${watts} watts`
+	} else if (d1 == "watt") {
+		let temp = number1 / number2
+		if (d2 == "volt") {
+			document.getElementById("result").value = `${temp} amps`
+		} else {
+			document.getElementById("result").value = `${temp} volts`
+		}
+	} else if (d2 == "watt") {
+		let temp = number2 / number1
+		if (d1 == "volt") {
+			document.getElementById("result").value = `${temp} amps`
+		} else {
+			document.getElementById("result").value = `${temp} volts`
+		}
+	}
+}
+</script>
+</body>
+</html>
