@@ -9,14 +9,16 @@
     <title>Webgoer - KF0ZFX.com</title>
   </head>
   <body>
+    <p>Begin websites with http:// or https://</p>
     <form>
+      <label for="website">Website:</label>
       <input type="text" id="website"></input>
       <button type="button" onclick="UDL()">Update link</button>
       <br>
       <a href="/webgoer/" id="geraldford">Link</a>
     </form>
     <script>
-      function (UDL) {
+      function UDL () {
         document.getElementById("geraldford").href = document.getElementById("website").value;
       }
     </script>
