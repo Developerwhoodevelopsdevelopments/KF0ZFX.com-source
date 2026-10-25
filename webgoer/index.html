@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <head>
+    <meta charset="UTF-8">
+    <title>Webgoer - KF0ZFX.com</title>
+  </head>
+  <body>
+    <p>Begin websites with http:// or https://</p>
+    <form>
+      <label for="website">Website:</label>
+      <input type="text" id="website"></input>
+      <button type="button" onclick="UDL()">Update link</button>
+      <br>
+      <a href="/webgoer/" id="geraldford">Link</a>
+    </form>
+    <script>
+      function UDL () {
+        document.getElementById("geraldford").href = document.getElementById("website").value;
+      }
+    </script>
+  </body>
