@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <head>
+    <meta charset="UTF-8">
+    <title>dBm-Watt Converter - KF0ZFX.com</title>
+  </head>
+  <body>
+    <form>
+      <input type="number" id="input" name="input">
+      	<select name="unit" id="unit">
+		      <option value="dBm">dBm</option>
+		      <option value="watt">Watts</option>
+	      </select>
+        <button type="button" onclick="calculate()">Calculate</button>
+      	<br>
+	      <output id="result" name="result" for="input unit">Output will appear here.</output>
+    </form>
+    <script>
+      function calculate() {
+        if (document.getElementById("unit").value == "dBm") {
+          document.getElementById("result").textContent = Math.pow(10 , (document.getElementById("input").value - 30) / 10) + " watts";
+        } else {
+          document.getElementById("result").textContent = (10 * Math.log10(document.getElementById("input").value)) + 30 + " dBm";
+        }
+      }
+    </script>
+  </body>
+</html>
